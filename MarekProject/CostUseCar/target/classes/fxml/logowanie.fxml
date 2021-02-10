@@ -8,7 +8,7 @@
    <children>
       <VBox alignment="CENTER" layoutX="33.0" layoutY="72.0" prefHeight="271.0" prefWidth="523.0" spacing="20.0">
          <children>
-            <Label text="Witaj" textFill="#c23636">
+            <Label text="Witaj" textFill="#7bc237">
                <font>
                   <Font size="58.0" />
                </font>
