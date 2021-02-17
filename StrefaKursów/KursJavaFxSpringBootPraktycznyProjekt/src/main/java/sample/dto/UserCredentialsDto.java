@@ -1,15 +1,15 @@
 package sample.dto;
 
 public class UserCredentialsDto {
-    private String Login;
+    private String login;
     private String password;
 
     public String getLogin() {
-        return Login;
+        return login;
     }
 
     public void setLogin(String login) {
-        Login = login;
+        this.login = login;
     }
 
     public String getPassword() {

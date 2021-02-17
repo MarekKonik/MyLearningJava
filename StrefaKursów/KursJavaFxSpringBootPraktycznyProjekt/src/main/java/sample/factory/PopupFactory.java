@@ -15,10 +15,12 @@ public class PopupFactory {
         Stage stage = new Stage();
         stage.initStyle(StageStyle.UNDECORATED);
         VBox pane = new VBox();
+        pane.setStyle(waitingPopupPaneStyle());
         pane.setAlignment(Pos.CENTER);
         pane.setSpacing(10);
 
         Label label = new Label(text);
+        label.setStyle(waitnigLabelStyle());
 
         ProgressBar progressBar = new ProgressBar();
         pane.getChildren().addAll(label,progressBar);
@@ -29,6 +31,14 @@ public class PopupFactory {
         stage.initModality(Modality.APPLICATION_MODAL);
 
         return stage;
+    }
+
+    private String waitnigLabelStyle() {
+        return "-fx-text-fill: #003366;";
+    }
+
+    private String waitingPopupPaneStyle() {
+        return "-fx-background-color: #c7c7c7; -fx-border-color: #003366;";
     }
 
 }
