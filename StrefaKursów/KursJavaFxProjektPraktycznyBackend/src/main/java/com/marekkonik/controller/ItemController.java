@@ -15,17 +15,17 @@ public class ItemController {
     private final ItemRepository itemRepository;
 
     @PostMapping("/items")
-    Item newItem(@RequestBody Item newItem) {
+    public Item newItem(@RequestBody Item newItem) {
         return itemRepository.save(newItem);
     }
 
     @GetMapping("/items")
-    List<Item> listItme() {
+    public List<Item> listItme() {
         return itemRepository.findAll();
     }
 
     @DeleteMapping("/items")
-    ResponseEntity deleteItem(@RequestBody Long idItem){
+    public ResponseEntity deleteItem(@RequestBody Long idItem){
         itemRepository.deleteById(idItem);
         return ResponseEntity.ok().build();
     }

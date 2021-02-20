@@ -1,19 +1,21 @@
 package sample.controller;
 
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import sample.dto.UserCredentialsDto;
+import sample.dto.OperatorCredentialsDto;
 import sample.factory.PopupFactory;
 import sample.rest.Authenticator;
 import sample.rest.AuthenticatorImpl;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -21,8 +23,13 @@ import java.util.ResourceBundle;
 public class LoginController implements Initializable {
 
 
+    private static final String APP_FXML = "/fxml/app.fxml";
+    private static final String APP_TITLE = "Marek Konik System";
+
     private PopupFactory popupFactory;
     private Authenticator authenticator;
+
+
     @FXML
     private Button exitButton;
     @FXML
@@ -35,7 +42,7 @@ public class LoginController implements Initializable {
     private TextField passwordTextField;
 
 
-    public LoginController(){
+    public LoginController() {
         popupFactory = new PopupFactory();
         authenticator = new AuthenticatorImpl();
     }
@@ -62,18 +69,51 @@ public class LoginController implements Initializable {
         String login = loginTextField.getText();
         String password = passwordTextField.getText();
 
-        UserCredentialsDto dto = new UserCredentialsDto();
+        OperatorCredentialsDto dto = new OperatorCredentialsDto();
         dto.setLogin(login);
         dto.setPassword(password);
-        authenticator.authenticate(dto,authenticationResult -> {
-            Platform.runLater(()->{
+        authenticator.authenticate(dto, authenticationResult -> {
+            Platform.runLater(() -> {
                 waitingPopup.close();
-                System.out.println("authenticationResult " + authenticationResult);
+                if (authenticationResult.getAuthenticated()) {
+                    openAppCloseLoginStage();
+                } else {
+                    showIncorrectCredentialsMessage();
+                }
+
+                System.out.println("authenticationResult " + authenticationResult.getAuthenticated() + " authentication: " + authenticationResult.toString());
             });
         });
 
-        System.out.println("Login: "+login);
-        System.out.println("Password "+password);
+        System.out.println("Login: " + login);
+        System.out.println("Password " + password);
+    }
+
+    private void showIncorrectCredentialsMessage() {
+
+        //TODO
+        System.out.println("Incorrect credentials");
+    }
+
+    private void openAppCloseLoginStage() {
+
+        Stage appStage = new Stage();
+        Parent appRoot = null;
+
+        try {
+            appRoot = FXMLLoader.load(getClass().getResource(APP_FXML));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Scene scene = new Scene(appRoot,1024,768);
+        appStage.setTitle(APP_TITLE);
+        appStage.setScene(scene);
+        appStage.show();
+        getStage().close();
+        
+        
+
     }
 
     private void initializeExitButton() {
