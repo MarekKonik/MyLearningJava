@@ -38,10 +38,12 @@ public class AddEmployeeController implements Initializable {
     @FXML
     private TextField salaryTextField;
 
-    public AddEmployeeController(PopupFactory popupFactory, EmployeeRestClient employeeRestClient) {
-        this.employeeRestClient = employeeRestClient;
-        this.popupFactory = new PopupFactory();
+
+    public AddEmployeeController() {
+        popupFactory = new PopupFactory();
+        employeeRestClient = new EmployeeRestClient();
     }
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

@@ -66,13 +66,14 @@ public class EmployeeController implements Initializable {
 
     private void initializeAddEmployeeButton() {
 
-        addButton.setOnAction(x -> {
+        addButton.setOnAction((x) -> {
             Stage addEmployeeStage = new Stage();
             addEmployeeStage.initStyle(StageStyle.UNDECORATED);
             addEmployeeStage.initModality(Modality.APPLICATION_MODAL);
 
             try {
-                Parent addEmployeeParent = FXMLLoader.load(getClass().getResource(ADD_EMPLOYEE_FXML));
+                Parent addEmployeeParent=FXMLLoader.load(getClass().getResource(ADD_EMPLOYEE_FXML));
+
                 Scene scene = new Scene(addEmployeeParent, 500, 400);
                 addEmployeeStage.setScene(scene);
                 addEmployeeStage.show();
