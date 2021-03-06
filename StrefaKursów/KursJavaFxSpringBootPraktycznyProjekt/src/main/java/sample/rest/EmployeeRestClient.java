@@ -20,7 +20,7 @@ public class EmployeeRestClient {
         restTemplate = new RestTemplate();
     }
 
-    public List<EmployeeDto> getEmployee() {
+    public List<EmployeeDto> getEmployees() {
         ResponseEntity<EmployeeDto[]> employeesResponseEntity = restTemplate.getForEntity(EMPLOYEE_URL, EmployeeDto[].class);
         return Arrays.asList(employeesResponseEntity.getBody());
 
@@ -34,5 +34,16 @@ public class EmployeeRestClient {
             //TODO implements
         }
 
+    }
+
+    public EmployeeDto getEmployee(Long idEmployee) {
+        String url = EMPLOYEE_URL +"/"+idEmployee;
+        ResponseEntity<EmployeeDto> responseEntity = restTemplate.getForEntity(url, EmployeeDto.class);
+        if (HttpStatus.OK.equals(responseEntity.getStatusCode())){
+            return responseEntity.getBody();
+        }else {
+            //TODO IMPLEMENTS
+            throw new RuntimeException("Can't load employee");
+        }
     }
 }

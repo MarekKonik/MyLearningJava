@@ -45,7 +45,7 @@ public class PopupFactory {
 
     private String okButtonStyle(){
         return " -fx-text-fill: -fx-primary-blue;\n" +
-                "        -fx-background-color:#c7c7c7;\n" +
+                "        -fx-background-color: #c7c7c7;\n" +
                 "        -fx-border-color: #003366;\n" +
                 "        -fx-background-radius: 0;";
     }
@@ -74,6 +74,7 @@ public class PopupFactory {
 
         Label label = new Label(text);
         label.setStyle(waitnigLabelStyle());
+
         Button okButton = new Button("OK");
         okButton.setStyle(okButtonStyle());
         okButton.setOnMouseEntered(x->{
