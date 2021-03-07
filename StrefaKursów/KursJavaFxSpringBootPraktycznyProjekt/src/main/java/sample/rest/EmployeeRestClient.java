@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 import sample.dto.EmployeeDto;
+import sample.handler.DeleteEmployeeHandler;
 import sample.handler.SaveEmployeeHandler;
 
 import java.util.Arrays;
@@ -45,5 +46,13 @@ public class EmployeeRestClient {
             //TODO IMPLEMENTS
             throw new RuntimeException("Can't load employee");
         }
+    }
+
+    public void deleteEmployee(Long idEmployee, DeleteEmployeeHandler handler) {
+
+        restTemplate.delete(EMPLOYEE_URL +"/"+idEmployee);
+        handler.handle();
+
+
     }
 }
