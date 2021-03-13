@@ -9,8 +9,8 @@ import javafx.stage.StageStyle;
 
 public class Main extends Application {
 
-    private static int WIDTH = 700;
-    private static int HEIGHT = 400;
+    public static int WIDTH = 700;
+    public static int HEIGHT = 400;
 
 
     @Override

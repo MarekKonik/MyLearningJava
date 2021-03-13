@@ -1,5 +1,6 @@
 package com.marekkonik.controller;
 
+import com.marekkonik.dto.ItemDto;
 import com.marekkonik.entity.Item;
 import com.marekkonik.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
@@ -7,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
@@ -20,8 +23,14 @@ public class ItemController {
     }
 
     @GetMapping("/items")
-    public List<Item> listItme() {
-        return itemRepository.findAll();
+    public List<ItemDto> listItme() {
+        return itemRepository.findAll()
+                .stream()
+                .map(ItemDto::of)
+                .collect(Collectors.toList());
+
+
+
     }
 
     @DeleteMapping("/items")
