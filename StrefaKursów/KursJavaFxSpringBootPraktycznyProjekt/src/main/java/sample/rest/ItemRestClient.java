@@ -3,6 +3,8 @@ package sample.rest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 import sample.dto.ItemDto;
+import sample.dto.ItemSaveDto;
+import sample.handler.ProcessFinishedHandler;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,8 +21,11 @@ public class ItemRestClient {
     }
 
     public List<ItemDto>getItems(){
-        ResponseEntity<ItemDto[]> restResponseEntity = restTemplate.getForEntity(ITEMS_URL, ItemDto[].class);
-        return Arrays.asList(restResponseEntity.getBody());
+        ResponseEntity<ItemDto[]> itemsRestResponseEntity = restTemplate.getForEntity(ITEMS_URL, ItemDto[].class);
+        return Arrays.asList(itemsRestResponseEntity.getBody());
 
+    }
+
+    public void saveItem(ItemSaveDto dto, ProcessFinishedHandler processFinishedHandler) {
     }
 }

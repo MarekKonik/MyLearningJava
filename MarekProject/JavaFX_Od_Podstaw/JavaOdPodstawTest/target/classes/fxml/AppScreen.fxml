@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AppScreen">
+   <children>
+      <Label layoutX="131.0" layoutY="74.0" text="Aplikacja Marek Konik" />
+      <Button layoutX="164.0" layoutY="341.0" mnemonicParsing="false" text="Wstecz" />
+      <BarChart layoutX="40.0" layoutY="129.0" prefHeight="192.0" prefWidth="302.0">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </BarChart>
+   </children>
+</Pane>

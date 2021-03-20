@@ -12,7 +12,7 @@
 
 <BorderPane fx:id="deleteEmployeeBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="400.0" styleClass="background" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.DeleteEmployeeController">
    <stylesheets>
-      <URL value="@../css/employee-crud.css" />
+      <URL value="@../css/crud.css" />
       <URL value="@../css/global-colors.css" />
    </stylesheets>
    <center>

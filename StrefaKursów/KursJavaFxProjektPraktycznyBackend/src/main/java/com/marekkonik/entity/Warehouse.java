@@ -3,6 +3,7 @@ package com.marekkonik.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -15,7 +16,10 @@ public class Warehouse {
 
     @Column
     private String name;
-    @ManyToMany(mappedBy = "warehouses")
-    Set<Item> items;
+
+
+@OneToMany(fetch = FetchType.LAZY, mappedBy = "warehouse")
+    private List<Item>items;
+
 
 }
