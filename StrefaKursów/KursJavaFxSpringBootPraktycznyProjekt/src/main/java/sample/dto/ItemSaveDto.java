@@ -6,6 +6,6 @@ import lombok.Data;
 public class ItemSaveDto {
     private String name;
     private Double quantity;
-    private long idQuantityType;
-    private long idWarehouse;
+    private Long idQuantityType;
+    private Long idWarehouse;
 }

@@ -1,5 +1,6 @@
 package sample.rest;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 import sample.dto.ItemDto;
@@ -16,6 +17,7 @@ public class ItemRestClient {
     private final RestTemplate restTemplate;
 
 
+
     public ItemRestClient() {
         restTemplate = new RestTemplate();
     }
@@ -27,5 +29,12 @@ public class ItemRestClient {
     }
 
     public void saveItem(ItemSaveDto dto, ProcessFinishedHandler processFinishedHandler) {
+        ResponseEntity<ItemDto> responseEntity = restTemplate.postForEntity(ITEMS_URL, dto, ItemDto.class);
+        if (HttpStatus.OK.equals(responseEntity.getStatusCode())){
+            handler.handle();
+
+        }else {
+            throw new RuntimeException("Cant save dto: "+dto);
+        }
     }
 }

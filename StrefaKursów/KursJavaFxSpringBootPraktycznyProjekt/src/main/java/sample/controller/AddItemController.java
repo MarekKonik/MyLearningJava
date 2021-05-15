@@ -50,7 +50,7 @@ public class AddItemController implements Initializable {
 
     private void initializeSaveButton() {
         saveButton.setOnAction(x->{
-            ItemSaveDto dto = new ItemSaveDto;
+            ItemSaveDto dto = new ItemSaveDto();
 
             String name = nameTextField.getText();
             Double quantity = Double.parseDouble(quantityTextField.getText());
